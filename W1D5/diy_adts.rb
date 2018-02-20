@@ -1,3 +1,4 @@
+#hi
 class Stack
 
   def initialize
