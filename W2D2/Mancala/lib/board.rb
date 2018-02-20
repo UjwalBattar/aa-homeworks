@@ -34,30 +34,40 @@ class Board
     start_stones = self.cups[start_pos]
     self.cups[start_pos] = []
     start_stones
-    idx = start_pos + 1
+    idx = start_pos
     if current_player_name == @name1
       until start_stones.empty?
+        idx += 1
+        idx = idx % 14
         idx = 0 if idx == 13
         self.cups[idx] << start_stones.shift
-        idx += 1
       end
     else
       until start_stones.empty?
+        idx += 1
+        idx = idx % 14
         idx = 0 if idx == 14
         idx = 7 if idx == 6
         self.cups[idx] << start_stones.shift
-        idx += 1
       end
     end
 
 
     render
     next_turn(idx)
-    idx - 1
   end
 
   def next_turn(ending_cup_idx)
     # helper method to determine what #make_move returns
+    if ending_cup_idx == 6 ||ending_cup_idx == 13
+      :prompt
+    elsif self.cups[ending_cup_idx].length == 1
+      :switch
+    else
+
+    ending_cup_idx
+    end
+
   end
 
   def render
