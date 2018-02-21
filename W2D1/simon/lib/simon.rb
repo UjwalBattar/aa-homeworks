@@ -30,7 +30,7 @@ class Simon
   def show_sequence
     add_random_color
     p self.seq
-    sleep (self.sequence_length* 0.25)
+    sleep (self.sequence_length* 0.5)
   end
 
   def require_sequence
@@ -43,6 +43,7 @@ class Simon
       guesses << guess
       colors_left -= 1
     end
+    p guesses
     if guesses == self.seq
       @game_over = false
     else
@@ -56,11 +57,13 @@ class Simon
   end
 
   def round_success_message
-    "Good job! Your streak is #{self.sequence_length}"
+      puts "Good job! Your streak is #{self.sequence_length}"
+      sleep 0.75
+      system "clear"
   end
 
   def game_over_message
-    "Game Over! Your streak was #{self.sequence_length - 1}"
+    puts "Game Over! Your streak was #{self.sequence_length - 1}"
   end
 
   def reset_game
