@@ -80,6 +80,7 @@ class SortingDemo
     arrays.each do |array|
       array_to_test = array.dup
       merge_sort(array_to_test)
+
     end
   end
 
