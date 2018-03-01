@@ -1,8 +1,10 @@
 class Person < ApplicationRecord
   validates :name, presence: true
+  validates :house, presence: true
 
   belongs_to :house,
-    primary_key: :id,
+    class_name: :House,
     foreign_key: :house_id,
-    class_name: :House
+    primary_key: :id
+
 end
